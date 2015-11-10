@@ -5,7 +5,8 @@
   "main": "app.js",
   "author": "",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "bower i"
   },
   "engines": {
     "node": "5.0.0"
@@ -13,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.1",
+    "bower": "^1.6.5",
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "marked": "^0.3.5",
