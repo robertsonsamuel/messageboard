@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    title Markdown Converter
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
+    link(href='css/style.css' rel='stylesheet')
+  body
+    .container
+      .row
+        .col-xs-12
+          h1 Markdown Converter!
+      .row
+        .col-xs-12.col-md-5
+          h3 Type Markdown here:
+        .col-xs-12.col-md-5.col-md-offset-2
+          h3 See HTML here:
+      .row
+        .col-xs-12.col-md-5
+          textarea#input(autofocus)
+        .col-xs-12.col-md-2#buttonBox
+          button.btn.btn-success.btn-lg.text-center#convert Convert
+        .col-xs-12.col-md-5
+          #output
+
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+    script(src='js/main.js')
