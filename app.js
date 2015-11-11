@@ -3,32 +3,27 @@
 var PORT = process.env.PORT || 3000;
 
 var express = require('express');
-var morgan = require('morgan');
 var bodyParser = require('body-parser');
-
-var marked = require('marked');
+var morgan = require('morgan');
 
 var app = express();
 
 app.set('view engine', 'jade');
 
+// GENERAL MIDDLEWARE
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.get('/', function(req, res){
-  res.render('index');
-});
+// ROUTES
+app.use('/', require('./routes/index'));
 
-app.get('/markdown', function(req, res) {
-  res.render('markdown');
-});
-
-app.post('/markdown', function(req, res) {
-  res.send(marked(req.body.md));
-});
+// 404 HANDLER
+app.use(function(req, res){
+  res.status(404).render('404')
+})
 
 app.listen(PORT, function(){
-  console.log('listening on port %s', PORT);
+  console.log('Listening on port ', PORT);
 });
