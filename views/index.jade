@@ -2,12 +2,60 @@ doctype html
 html(lang="en")
   head
     title Home
-    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css")
-    link(href="css/style.css")
+    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css", rel='stylesheet')
+    link(href="css/style.css", rel='stylesheet')
   body
     .container
-      br
-      .jumbotron
-        h1 Hey!
+      .row
+        .col-md-12
+          h4 Sam's Message Board
+          input(type="text", placeholder="Name", id="NAME")
+          input(type="text", placeholder="Message", id="MESSAGE", size="35")
+          button.btn.btn-success#addMessage Add Message
+          .table-responsive
+            table#messageBoard.table.table-bordred.table-striped
+              thead
+                th Name
+                th Message
+                th Date
+                th Time
+                th Edit
+                th Delete
+              tbody 
+                each element in messages
+                  tr
+                    td(class= "Name")= element.name
+                    td(class= "Message")= element.message
+                    td(class= "Date")= element.date
+                    td(class= "Time")= element.time
+                    td
+                      p(data-placement='top', data-toggle='tooltip', title='Edit')
+                        button.btn.btn-primary.btn-xs(data-title='Edit', data-toggle='modal', data-target='#edit', class="editButton")
+                          span.glyphicon.glyphicon-pencil
+                    td
+                       p(data-placement='top', data-toggle='tooltip', title='Delete')
+                         button.btn.btn-danger.btn-xs(data-title='Delete', data-toggle='modal', data-target='#delete', class="deleteButton")
+                           span.glyphicon.glyphicon-trash
+          
+    #edit.modal.fade(tabindex='-1', role='dialog', aria-labelledby='edit', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true')
+              span.glyphicon.glyphicon-remove(aria-hidden='true')
+            h4#Heading.modal-title.custom_align Edit Your Detail
+          .modal-body
+            .form-group
+              input.form-control(type='text', placeholder='Name', id="modalNameEdit")
+            .form-group
+              input.form-control(type='text', placeholder='Message', id="modalMessageEdit")
+          .modal-footer
+            button.btn.btn-warning.btn-lg(type='button', style='width: 100%;', id="updateButton")
+              span.glyphicon.glyphicon-ok-sign
+              |  Update
+        // /.modal-content
+      // /.modal-dialog
+   
     script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
     script(src='js/main.js')
