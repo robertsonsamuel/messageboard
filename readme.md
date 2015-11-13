@@ -5,4 +5,4 @@ First, cd into the project directory, and do `npm run setup` to install the depe
 The current known bug is added messages cannot be deleted right after adding. Refreshing the page will allow the 
 user to delete any messages and it will function as normal.
 
-[Here](https://secure-caverns-5677.herokuapp.com) is the deployed 
+[Here](https://secure-caverns-5677.herokuapp.com) is the deployed example. 
